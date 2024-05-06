@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.NuovaMailController">
+   <children>
+      <Button fx:id="inviaMail" layoutX="463.0" layoutY="371.0" mnemonicParsing="false" onAction="#inviaMail" prefHeight="34.0" prefWidth="110.0" text="Invia" />
+      <TextField fx:id="destinatari" layoutX="39.0" layoutY="67.0" prefHeight="25.0" prefWidth="497.0" />
+      <TextArea fx:id="testoMail" layoutX="38.0" layoutY="155.0" prefHeight="200.0" prefWidth="497.0" wrapText="true" />
+      <Label layoutX="38.0" layoutY="50.0" text="Destinatari">
+         <font>
+            <Font name="OpenSymbol" size="12.0" />
+         </font></Label>
+      <Button fx:id="eliminaTutto" layoutX="335.0" layoutY="371.0" mnemonicParsing="false" onAction="#cancellaTestoMail" prefHeight="34.0" prefWidth="110.0" text="Elimina tutto" />
+      <Button fx:id="back" layoutX="14.0" layoutY="376.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="73.0" text="Indietro" />
+      <TextField fx:id="oggetto" layoutX="39.0" layoutY="116.0" prefHeight="25.0" prefWidth="497.0" />
+      <Label layoutX="38.0" layoutY="99.0" text=" Oggetto">
+         <font>
+            <Font name="OpenSymbol" size="12.0" />
+         </font></Label>
+      <Label layoutX="14.0" layoutY="14.0" text="INVIA NUOVA MAIL">
+         <font>
+            <Font name="OpenSymbol" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

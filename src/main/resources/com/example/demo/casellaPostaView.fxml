@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.CasellaController">
+    <children>
+        <TableView fx:id="mailTableView" editable="true" layoutX="27.0" layoutY="79.0" onMouseClicked="#handleApriMailDoubleClick" prefHeight="344.0" prefWidth="740.0">
+            <columns>
+                <TableColumn prefWidth="30" text="ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="125.0" text="mittente">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="mittente" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="125.0" text="destinatario">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="destinatari" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn editable="false" prefWidth="259.0" text="testoMail">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="testoMail" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn editable="false" prefWidth="201.0" text="Data">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="data" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+            <contextMenu>
+                <ContextMenu>
+                    <items>
+                        <MenuItem fx:id="elimina" mnemonicParsing="false" onAction="#handleEliminaRigaSelezionata" text="elimina" />
+                        <MenuItem fx:id="apri" mnemonicParsing="false" onAction="#handleApriMail" text="apri" />
+                    </items>
+                </ContextMenu>
+            </contextMenu>
+        </TableView>
+
+        <Button fx:id="nuovaMail" layoutX="631.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#handleCreaNuovaMail" prefHeight="35.0" prefWidth="136.0" text="Invia nuova mail" />
+        <Button layoutX="27.0" layoutY="447.0" mnemonicParsing="false" onAction="#handelSvuotaCasellaDiPosta" text="Svuota casella di posta" />
+
+        <Label layoutX="23.0" layoutY="14.0" text="CASELLA DI POSTA">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+        </Label>
+      <Button layoutX="141.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleMostraMailUscita" prefHeight="25.0" prefWidth="108.0" text="Posta in uscita" textAlignment="CENTER" />
+      <Button layoutX="262.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleMostraMailInEntrata" prefHeight="25.0" prefWidth="108.0" text="Posta in entrata" textAlignment="CENTER" />
+      <Button layoutX="23.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleMostraTutto" prefHeight="25.0" prefWidth="108.0" text="Mostra tutto" />
+      <Button layoutX="381.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleMostraPostaInviata" prefHeight="25.0" prefWidth="108.0" text="Posta Inviata" textAlignment="CENTER" />
+      <Button layoutX="443.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleInvio" prefHeight="35.0" prefWidth="86.0" text="Invio" />
+      <Button layoutX="568.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleRicevi" prefHeight="35.0" prefWidth="86.0" text="Ricevi" />
+      <Label fx:id="utente" layoutX="141.0" layoutY="14.0" text="di ">
+         <font>
+            <Font name="Arial Italic" size="12.0" />
+         </font>
+      </Label>
+
+    </children>
+</Pane>
