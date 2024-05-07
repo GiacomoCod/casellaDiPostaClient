@@ -58,7 +58,7 @@ public class DataModel {
             tableView.setItems(emailList.filtered(mail1 -> mail1.getId()==0));
         }
         else if(tipo == 2) {
-            tableView.setItems(emailList.filtered(mail1 -> mail1.getDestinatari().equals(this.mail_utente)));
+            tableView.setItems(emailList.filtered(mail1 -> mail1.getDestinatari().equals(this.email_utente)));
         }
         else if(tipo == 3) {
             tableView.setItems(emailList.filtered(mail1 -> mail1.getStato().equals("Inviata")));
@@ -101,7 +101,7 @@ public class DataModel {
         // Leggi i singoli campi dall'oggetto JSON
         Integer id = jsonObj.getInt("id");
         String mittente = jsonObj.getString("mittente");
-        String destinatario = jsonObj.getString("destinatari");
+        String destinatari = jsonObj.getString("destinatari");
         String oggetto = jsonObj.getString("oggetto");
         String testoMail = jsonObj.getString("testoMail");
         LocalDateTime data = LocalDateTime.parse(jsonObj.getString("data"));
@@ -110,7 +110,7 @@ public class DataModel {
 
         //String dataFormattata = formattaData(data);
 
-        Mail mail = new Mail(id, mittente, destinatario, oggetto, testoMail, data.toString(), uniqueCode, stato);
+        Mail mail = new Mail(id, mittente, destinatari, oggetto, testoMail, data.toString(), uniqueCode, stato);
 
         this.addEmail(mail);
     }
@@ -137,9 +137,11 @@ public class DataModel {
     }
 
 
-    private String mail_utente;
+    private String email_utente;
     private String server_ip;
     private int server_port;
+    private int timer_invio;
+    private int timer_ricezione;
 
     public void configurazioneIniziale() throws IOException {
 
@@ -149,13 +151,15 @@ public class DataModel {
 
         JSONObject jobj = new JSONObject(content);
 
-        mail_utente = jobj.getString("email_utente");
+        email_utente = jobj.getString("email_utente");
         server_ip = jobj.getString("server_ip");
         server_port = jobj.getInt("server_port");
+        timer_invio = jobj.getInt("timer_invio");
+        timer_ricezione = jobj.getInt("timer_ricezione");
     }
 
-    public String getMail_utente() {
-        return mail_utente;
+    public String getEmail_utente() {
+        return email_utente;
     }
 
     public String getServer_ip() {
@@ -164,5 +168,13 @@ public class DataModel {
 
     public int getServer_port() {
         return server_port;
+    }
+
+    public int getTimer_invio() {
+        return timer_invio;
+    }
+
+    public int getTimer_ricezione() {
+        return timer_ricezione;
     }
 }

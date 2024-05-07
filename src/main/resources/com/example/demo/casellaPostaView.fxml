@@ -19,7 +19,7 @@
                         <PropertyValueFactory property="mittente" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn prefWidth="125.0" text="destinatario">
+                <TableColumn prefWidth="125.0" text="destinatari">
                     <cellValueFactory>
                         <PropertyValueFactory property="destinatari" />
                     </cellValueFactory>
@@ -58,12 +58,13 @@
       <Button layoutX="23.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleMostraTutto" prefHeight="25.0" prefWidth="108.0" text="Mostra tutto" />
       <Button layoutX="381.0" layoutY="41.0" mnemonicParsing="false" onAction="#handleMostraPostaInviata" prefHeight="25.0" prefWidth="108.0" text="Posta Inviata" textAlignment="CENTER" />
       <Button layoutX="443.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleInvio" prefHeight="35.0" prefWidth="86.0" text="Invio" />
-      <Button layoutX="568.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleRicevi" prefHeight="35.0" prefWidth="86.0" text="Ricevi" />
+      <Button layoutX="536.0" layoutY="435.0" mnemonicParsing="false" onAction="#handleRicevi" prefHeight="35.0" prefWidth="86.0" text="Ricevi" />
       <Label fx:id="utente" layoutX="141.0" layoutY="14.0" text="di ">
          <font>
             <Font name="Arial Italic" size="12.0" />
          </font>
       </Label>
+      <Button layoutX="638.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleAvviaSessioneAutomatica" prefHeight="25.0" prefWidth="116.0" text="Automatica" />
 
     </children>
 </Pane>

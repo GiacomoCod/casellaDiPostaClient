@@ -28,8 +28,18 @@ public class GestioneMail {
         if (controllo == 1) {
             nmc.setDestinatariReply(model.getCurrentMail().getMittente());
         } else if (controllo == 2) {
-            String destinatari = model.getCurrentMail().getMittente()+model.getCurrentMail().getDestinatari().replaceAll(model.getMail_utente(), "");
-            nmc.setDestinatariReplyAll(destinatari);
+
+            String[] nomiArray = model.getCurrentMail().getDestinatari().split(";");
+
+            StringBuilder destinatari = new StringBuilder(model.getCurrentMail().getMittente());
+
+            for(String str : nomiArray) {
+                if (!str.equals(model.getEmail_utente())) {
+                    destinatari.append(";").append(str);
+                }
+            }
+
+            nmc.setDestinatariReplyAll(String.valueOf(destinatari));
         }
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
@@ -52,11 +62,11 @@ public class GestioneMail {
             vmc.initModel(model);
             vmc.setStage(stage);
             vmc.setMail(tv);
-            if (selectedItem.getMittente().equals(model.getMail_utente())) {
+            if (selectedItem.getMittente().equals(model.getEmail_utente())) {
                 controllo = 0;
             }
             int stat = 1;
-            if(selectedItem.getDestinatari().equals(model.getMail_utente())) {
+            if(selectedItem.getDestinatari().equals(model.getEmail_utente())) {
                 stat = 0;
             }
             vmc.setControllo(controllo);
@@ -147,7 +157,7 @@ public class GestioneMail {
 
             //se il comando è "Invia" vuol dire che il client vuole inviare mail, se il comando è "Ricevi", vuol dire che il client sta richiedendo al server le mail da ricevere
 
-            GestioneComando im = new GestioneComando(comando, modello.getMail_utente(), jsonArray, modello.getUltimoId());
+            GestioneComando im = new GestioneComando(comando, modello.getEmail_utente(), jsonArray, modello.getUltimoId());
             JSONObject jobj = new JSONObject(im);
             toSend = jobj.toString();
 

@@ -2,22 +2,14 @@ package com.example.demo;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.*;
-import java.net.Socket;
-import java.net.SocketTimeoutException;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -76,7 +68,7 @@ public class NuovaMailController {
     void inviaMail(ActionEvent event) throws IOException {
 
         Integer Id = 0;
-        String mittente = model.getMail_utente();
+        String mittente = model.getEmail_utente();
         String dest = destinatari.getText();
         String ogg = oggetto.getText();
         String tm = testoMail.getText();

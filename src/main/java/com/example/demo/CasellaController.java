@@ -1,13 +1,11 @@
 package com.example.demo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -69,35 +67,46 @@ public class CasellaController {
         }
         this.model = model ;
 
-        model.loadData();
         model.configurazioneIniziale();
+        model.loadData();
         model.aggiornaTableVIew(mailTableView, 0);
 
-        utente.setText("di "+ model.getMail_utente());
+        utente.setText("di "+ model.getEmail_utente());
     }
 
-    public void inviaComando() throws IOException {
 
 
+    @FXML
+    public void handleMostraPostaInviata(ActionEvent actionEvent) {
+        model.aggiornaTableVIew(mailTableView, 3);
+    }
+    @FXML
+    public void handleInvio(ActionEvent actionEvent) throws IOException {
+        gm.richiestaOperazioneAlServer(model, "invia");
+    }
+    @FXML
+    public void handleRicevi(ActionEvent actionEvent) throws IOException {
+        gm.richiestaOperazioneAlServer(model, "richiedi");
+    }
+    @FXML
+    public void handleAvviaSessioneAutomatica(ActionEvent actionEvent) {
 
+        Timer timerInvio = new Timer();
 
-//        Timer timerInvio = new Timer();
-//
-//
-//        TimerTask taskInvio = new TimerTask() {
-//            @Override
-//            public void run() {
-//                try {
-//                    gm.richiestaOperazioneAlServer(model, "Invia");
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//
-//        };
-//
-//        // Esecuzione una volta dopo 5 secondi e ogni 10 secondi
-//        timerInvio.schedule(taskInvio, 5000, 10000);
+        TimerTask taskInvio = new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    gm.richiestaOperazioneAlServer(model, "invia");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        };
+
+        // Esecuzione una volta dopo 5 secondi e ogni 10 secondi
+//        timerInvio.schedule(taskInvio, 5000, model.getTimer_invio());
 //
 //        Timer timerRichiesta = new Timer();
 //
@@ -113,21 +122,8 @@ public class CasellaController {
 //
 //        };
 //
-//        timerRichiesta.schedule(taskRichiesta, 10000, 15000);
+//        timerRichiesta.schedule(taskRichiesta, 10000, model.getTimer_ricezione());
 
-    }
-
-    @FXML
-    public void handleMostraPostaInviata(ActionEvent actionEvent) {
-        model.aggiornaTableVIew(mailTableView, 3);
-    }
-    @FXML
-    public void handleInvio(ActionEvent actionEvent) throws IOException {
-        gm.richiestaOperazioneAlServer(model, "invia");
-    }
-    @FXML
-    public void handleRicevi(ActionEvent actionEvent) throws IOException {
-        gm.richiestaOperazioneAlServer(model, "richiedi");
     }
 }
 

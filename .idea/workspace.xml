@@ -10,7 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="febfafe4-589a-47fd-84f7-d7b671732b0e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/demo_jar/dati.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/demo_jar/dati.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/demo_jar/demo.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/demo_jar/demo.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DataModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DataModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/casellaPostaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/casellaPostaView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/formMailUscita.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +37,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;GiacomoCod&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/GiacomoCod/casellaDiPostaClient.git&quot;,
+    &quot;accountId&quot;: &quot;0d829ae6-7a8c-4f8a-8791-f47ad2a9b6ee&quot;
+  }
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -174,7 +195,11 @@
       <workItem from="1714989089267" duration="660000" />
       <workItem from="1715004408251" duration="1036000" />
       <workItem from="1715005461955" duration="6630000" />
-      <workItem from="1715013858363" duration="24000" />
+      <workItem from="1715013858363" duration="412000" />
+      <workItem from="1715077033149" duration="3011000" />
+      <workItem from="1715080814986" duration="538000" />
+      <workItem from="1715090007952" duration="4588000" />
+      <workItem from="1715098051946" duration="4414000" />
     </task>
     <servers />
   </component>
@@ -198,13 +223,8 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java</url>
-          <line>174</line>
+          <line>184</line>
           <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java</url>
-          <line>72</line>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/PopUpController.java</url>
@@ -213,8 +233,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java</url>
-          <line>104</line>
+          <line>114</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java</url>
+          <line>191</line>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

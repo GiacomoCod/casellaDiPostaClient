@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
 
         DataModel model = new DataModel();
         casellaController.initModel(model);
-        casellaController.inviaComando();
+        //casellaController.inviaComando();
 
 
         //casellaController.init();
