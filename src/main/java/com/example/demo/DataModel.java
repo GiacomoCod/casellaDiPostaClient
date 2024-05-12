@@ -55,23 +55,23 @@ public class DataModel {
             tableView.setItems(emailList);
         }
         else if(tipo == 1) {
-            tableView.setItems(emailList.filtered(mail1 -> mail1.getId()==0));
+            tableView.setItems(emailList.filtered(mail1 -> mail1.getStato().equals("Da inviare")));
         }
         else if(tipo == 2) {
-            tableView.setItems(emailList.filtered(mail1 -> mail1.getDestinatari().equals(getEmail_utente())));
+            tableView.setItems(emailList.filtered(mail1 -> mail1.getDestinatari().contains(getEmail_utente())&&(mail1.getId()>0)));
         }
         else if(tipo == 3) {
-            tableView.setItems(emailList.filtered(mail1 -> mail1.getStato().equals("Inviata")));
+            tableView.setItems(emailList.filtered(mail1 -> mail1.getStato().equals("Inviata")&&(mail1.getId()==0)));
         }
 
     }
 
     public int getUltimoId() {
-
         if (emailList.isEmpty()) {
             return 0;
         }
         else {
+            emailList.sort(Comparator.comparing(Mail::getId));
             return emailList.getLast().getId();
         }
     }

@@ -161,7 +161,7 @@ public class GestioneMail {
 
             writer.println(toSend);
 
-            socket.setSoTimeout(10000);
+            //socket.setSoTimeout(10000);
 
 
             // Risposta dal server
@@ -181,7 +181,7 @@ public class GestioneMail {
                     for (Mail mail : modello.getEmailList()) {
                         if (codiceDaContr.equals(mail.getUniqueCode())) {
                             mail.setStato("Inviata");
-                            mail.setId(idDaIns);
+                            //mail.setId(idDaIns);
                             //modello.getEmailList().remove(mail);
                         }
                     }
@@ -194,9 +194,17 @@ public class GestioneMail {
                     modello.aggiungiMailDaJson(jsonObj);
                 }
                 modello.aggiornaFile();
-                LocalDateTime localDateTime = LocalDateTime.now();
-                String ldt = localDateTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
-                return ldt+" - INFO - Nuovo messaggio in entrata\n";
+
+                if(!jsonResponse.isEmpty()) {
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    String ldt = localDateTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+                    String numeroMessaggi = String.valueOf(jsonResponse.length());
+                    return ldt+" - INFO - Messaggi ricevuti: "+numeroMessaggi;
+                } else {
+                    return "";
+                }
+
+
             }
 
             //ciclo di controllo su tutta la lista controllando se il codice univoco corrispond ee segnare lo stato della mail come inviato
