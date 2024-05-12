@@ -67,11 +67,6 @@ public class Mail {
     }
 
     public String getData() {
-/*
-        LocalDateTime data = LocalDateTime.parse(this.data.get());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
- */
         return data.get();
     }
 

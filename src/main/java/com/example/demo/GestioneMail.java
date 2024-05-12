@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +13,8 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.net.Socket;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class GestioneMail {
 
@@ -38,8 +41,10 @@ public class GestioneMail {
                     destinatari.append(";").append(str);
                 }
             }
-
             nmc.setDestinatariReplyAll(String.valueOf(destinatari));
+        } else if (controllo == 3) {
+            nmc.setOggetto(model.getCurrentMail().getOggetto());
+            nmc.setTestoMail(model.getCurrentMail().getTestoMail());
         }
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
@@ -65,20 +70,15 @@ public class GestioneMail {
             if (selectedItem.getMittente().equals(model.getEmail_utente())) {
                 controllo = 0;
             }
-            int stat = 1;
-            if(selectedItem.getDestinatari().equals(model.getEmail_utente())) {
-                stat = 0;
-            }
-            vmc.setControllo(controllo);
-            vmc.setStato(stat);
 
+            vmc.setControllo(controllo);
             vmc.mostraOggetto();
             vmc.mostraTesto();
             vmc.mostraMittente();
             vmc.mostraData();
             vmc.mostraCodice();
             vmc.mostraStatoInvio(selectedItem.getStato());
-
+            //stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
             stage.show();
         }
@@ -109,21 +109,17 @@ public class GestioneMail {
         FXMLLoader loadPopUp = new FXMLLoader(getClass().getResource("popUp.fxml"));
         Stage stage = new Stage();
         Parent root = loadPopUp.load();
-
         stage.setScene(new Scene(root));
         stage.initModality(Modality.APPLICATION_MODAL);
         PopUpController popUp = loadPopUp.getController();
         popUp.setStage(stage);
         popUp.setText(messaggio);
         popUp.setControllo(controllo);
-        popUp.initialize(root);
         stage.showAndWait();
         return popUp.getResponse();
     }
 
-
-
-    public void richiestaOperazioneAlServer(DataModel modello, String comando) throws IOException {
+    public String richiestaOperazioneAlServer(DataModel modello, String comando) throws IOException {
 
         //compongo il io array json con tutte le mail da inviare (che hanno stato "Da inviare")
 
@@ -198,6 +194,9 @@ public class GestioneMail {
                     modello.aggiungiMailDaJson(jsonObj);
                 }
                 modello.aggiornaFile();
+                LocalDateTime localDateTime = LocalDateTime.now();
+                String ldt = localDateTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+                return ldt+" - INFO - Nuovo messaggio in entrata\n";
             }
 
             //ciclo di controllo su tutta la lista controllando se il codice univoco corrispond ee segnare lo stato della mail come inviato
@@ -218,21 +217,25 @@ public class GestioneMail {
 
  */
 
-            socket.close();
-
         } catch (IOException e) {
             if (e.getMessage().equals("Connessione rifiutata")) {
                 System.out.println("Il server rifiuta la connessione. Riprova più tardi.");
             } else {
                 System.out.println("Errore di connessione al server. " + e.getMessage());
-                PopUp("Errore di connessione al server. " + e.getMessage(), 0);
+                Platform.runLater(() -> {
+                    try {
+                        PopUp("Errore di connessione al server. " + e.getMessage(), 0);
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
             }
         } catch (JSONException e) {
             System.out.println(e.getMessage());
         }
 
 
-
+        return "";
     }
 
     private static JSONArray getJsonArray(Socket socket) throws IOException {

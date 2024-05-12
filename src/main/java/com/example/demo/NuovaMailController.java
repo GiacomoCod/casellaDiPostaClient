@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -72,11 +74,11 @@ public class NuovaMailController {
         String dest = destinatari.getText();
         String ogg = oggetto.getText();
         String tm = testoMail.getText();
+        String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
         String stato = "Da inviare";
         String codiceUnivoco = java.util.UUID.randomUUID().toString();
 
-        Mail mail = new Mail(Id, mittente, dest, ogg, tm, LocalDateTime.now().toString(), codiceUnivoco, stato);
-        //mail.creaOggettoJson(Id, mittente, dest, ogg, tm, codiceUnivoco, stato);
+        Mail mail = new Mail(Id, mittente, dest, ogg, tm, data, codiceUnivoco, stato);
 
         String messaggio = controllaDestinatario(destinatari.getText());
         String oggDaContr = oggetto.getText();
@@ -96,20 +98,24 @@ public class NuovaMailController {
             } else {
                 //messaggio di errore sull'oggetto
                 gm.PopUp(oggetto, 0);
+
             }
         } else {
             //messaggio di errore sul destinatario
             gm.PopUp(messaggio, 0);
+
         }
 
 
     }
 
     private boolean controlloMessaggioDest(String messaggio) {
-        return !messaggio.equals("Destinatario non trovato");
+        boolean ris1 = messaggio.equals("L'indirizzo mail inserito non è corretto");
+        boolean ris2 = messaggio.equals("Inserire un destinatario");
+        return !(ris1||ris2);
     }
     private boolean controlloMessaggioOgg(String messaggio) {
-        return !messaggio.equals("Oggetto non trovato");
+        return !messaggio.equals("Inserire un oggetto");
     }
 
     public void setMail(TableView<Mail> mailTableView) {
@@ -127,6 +133,10 @@ public class NuovaMailController {
         // espressione regolare per validare l'email
         //String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
+        if(destDaControl.isEmpty()) {
+            return "Inserire un destinatario";
+        }
+
         String regex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}(?:;[\\s]*[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7})*$";
 
 
@@ -138,14 +148,22 @@ public class NuovaMailController {
 
         // Controlla se l'email corrisponde all'espressione regolare
         if (!(matcher.matches())) {
-            return "Destinatario non trovato";
+            return "L'indirizzo mail inserito non è corretto";
         }
         return "Messaggio inserito in posta in uscita!";
     }
 
     private String controllaOggetto(String oggDaContr) throws IOException {
         if (oggDaContr.isEmpty())
-            return "Oggetto non trovato";
+            return "Inserire un oggetto";
         else return oggDaContr;
+    }
+
+    public void setOggetto(String oggetto) {
+        this.oggetto.setText(oggetto);
+    }
+
+    public void setTestoMail(String testoMail) {
+        this.testoMail.setText(testoMail);
     }
 }

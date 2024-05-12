@@ -9,17 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="febfafe4-589a-47fd-84f7-d7b671732b0e" name="Changes" comment="">
+    <list default="true" id="febfafe4-589a-47fd-84f7-d7b671732b0e" name="Changes" comment="Terzo commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/demo_jar/dati.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/demo_jar/dati.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/demo_jar/demo.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/demo_jar/demo.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DataModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DataModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Mail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Mail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/PopUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/PopUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/VisualizzaMailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/VisualizzaMailController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/casellaPostaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/casellaPostaView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/formMailUscita.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/formInviaMail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/formInviaMail.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/formVisualizzaMail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/formVisualizzaMail.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/popUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/popUp.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,12 +202,31 @@
       <workItem from="1715077033149" duration="3011000" />
       <workItem from="1715080814986" duration="538000" />
       <workItem from="1715090007952" duration="4588000" />
-      <workItem from="1715098051946" duration="4414000" />
+      <workItem from="1715098051946" duration="4434000" />
+      <workItem from="1715181511257" duration="4971000" />
+      <workItem from="1715189012155" duration="1023000" />
+      <workItem from="1715190168147" duration="73000" />
+      <workItem from="1715247609181" duration="7515000" />
+      <workItem from="1715423298515" duration="3357000" />
+      <workItem from="1715522688554" duration="3586000" />
     </task>
+    <task id="LOCAL-00001" summary="Terzo commit">
+      <option name="closed" value="true" />
+      <created>1715104522676</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715104522676</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Terzo commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Terzo commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -223,26 +245,40 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java</url>
-          <line>184</line>
+          <line>180</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/PopUpController.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java</url>
-          <line>114</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java</url>
-          <line>191</line>
+          <line>187</line>
           <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java</url>
+          <line>45</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java</url>
+          <line>69</line>
+          <properties class="com.example.demo.NuovaMailController" method="inviaMail">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.example.demo.GestioneMail" memberName="model" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -31,6 +31,8 @@ public class VisualizzaMailController {
     public javafx.scene.control.Label codice;
     @FXML
     public javafx.scene.control.Label stato;
+    @FXML
+    public javafx.scene.control.Button forwardButton;
 
     private Stage stage; // Dichiarazione dell'oggetto Stage
 
@@ -68,10 +70,8 @@ public class VisualizzaMailController {
     }
 
     public void mostraData() {
-        LocalDateTime d = LocalDateTime.parse(model.getCurrentMail().getData());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        String dataFormattata = d.format(formatter);
-        data.setText(dataFormattata);
+
+        data.setText(model.getCurrentMail().getData());
     }
     public void mostraCodice() {
         codice.setText(model.getCurrentMail().getUniqueCode());
@@ -93,6 +93,10 @@ public class VisualizzaMailController {
         gm.creaNuovaMail(model, mailTableViewAgg, 2);
     }
 
+    public void forwarding(ActionEvent actionEvent) throws IOException {
+        gm.creaNuovaMail(model, mailTableViewAgg, 3);
+    }
+
     public void initModel(DataModel model) {
         if (this.model != null) {
             throw new IllegalStateException("Model can only be initialized once");
@@ -104,11 +108,9 @@ public class VisualizzaMailController {
     public void setControllo(int controllo) {
         if (controllo==0) {
             MenuButton.setVisible(false);
+            forwardButton.setVisible(false);
         }
     }
-    public void setStato(int stat) {
-        if (stat==0) {
-            stato.setVisible(false);
-        }
-    }
+
+
 }

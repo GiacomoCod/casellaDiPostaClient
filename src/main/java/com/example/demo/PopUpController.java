@@ -13,11 +13,9 @@ public class PopUpController {
     @FXML
     public Label text;
     @FXML
-    public Button si;
+    public Button cancelButton;
     @FXML
-    public Button no;
-    @FXML
-    public Button ok;
+    public Button okButton;
 
     private Stage stage; // Dichiarazione dell'oggetto Stage
 
@@ -38,8 +36,8 @@ public class PopUpController {
         closeWindow();
     }
 
-    public void setText(String text) {
-        this.text.setText(text);
+    public void setText(String messaggio) {
+        text.setText(messaggio);
     }
 
     @FXML
@@ -50,11 +48,11 @@ public class PopUpController {
 
     public void setControllo(int controllo) {
         if (controllo == 1) {
-            si.setVisible(true);
-            no.setVisible(true);
-            ok.setVisible(false);
+            okButton.setVisible(true);
+            cancelButton.setVisible(true);
         } else {
-            ok.setVisible(true);
+            okButton.setVisible(true);
+            cancelButton.setVisible(false);
         }
 
 
@@ -64,14 +62,4 @@ public class PopUpController {
         return response;
     }
 
-
-    public void initialize(Parent root) {
-        // Calcola la larghezza necessaria per visualizzare l'intero testo
-        double width = text.prefWidth(-1);
-
-        // Imposta la larghezza preferita della Label e della finestra
-        text.setPrefWidth(width);
-        Stage stage = (Stage) root.getScene().getWindow();
-        stage.setWidth(width);
-    }
 }

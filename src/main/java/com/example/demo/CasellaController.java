@@ -2,7 +2,9 @@ package com.example.demo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
@@ -12,14 +14,16 @@ import java.util.TimerTask;
 
 public class CasellaController {
 
+
     private DataModel model;
 
     private final GestioneMail gm = new GestioneMail();
 
-    private int tipo;
-
     @FXML
     public TableView<Mail> mailTableView;
+
+    @FXML
+    public TextField barraDiStato;
 
     @FXML
     void handleCreaNuovaMail(MouseEvent event) throws IOException {
@@ -80,13 +84,18 @@ public class CasellaController {
     public void handleMostraPostaInviata(ActionEvent actionEvent) {
         model.aggiornaTableVIew(mailTableView, 3);
     }
+
+    String messaggio="";
+
     @FXML
     public void handleInvio(ActionEvent actionEvent) throws IOException {
-        gm.richiestaOperazioneAlServer(model, "invia");
+        messaggio = gm.richiestaOperazioneAlServer(model, "invia");
+        barraDiStato.appendText(messaggio + "\n");
     }
     @FXML
     public void handleRicevi(ActionEvent actionEvent) throws IOException {
-        gm.richiestaOperazioneAlServer(model, "richiedi");
+        messaggio = gm.richiestaOperazioneAlServer(model, "richiedi");
+        barraDiStato.appendText(messaggio + "\n");
     }
     @FXML
     public void handleAvviaSessioneAutomatica(ActionEvent actionEvent) {
@@ -106,26 +115,32 @@ public class CasellaController {
         };
 
         // Esecuzione una volta dopo 5 secondi e ogni 10 secondi
-//        timerInvio.schedule(taskInvio, 5000, model.getTimer_invio());
-//
-//        Timer timerRichiesta = new Timer();
-//
-//        TimerTask taskRichiesta = new TimerTask() {
-//            @Override
-//            public void run() {
-//                try {
-//                    gm.richiestaOperazioneAlServer(model, "richiedi");
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
-//            }
-//
-//        };
-//
-//        timerRichiesta.schedule(taskRichiesta, 10000, model.getTimer_ricezione());
+        timerInvio.schedule(taskInvio, 5000, model.getTimer_invio());
+
+        Timer timerRichiesta = new Timer();
+
+        TimerTask taskRichiesta = new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    messaggio=gm.richiestaOperazioneAlServer(model, "richiedi");
+                    barraDiStato.appendText(messaggio);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+        };
+
+        timerRichiesta.schedule(taskRichiesta, 10000, model.getTimer_ricezione());
 
     }
+    public void setBarraDiStato(String messaggioDiLog) {
+        barraDiStato.setText(messaggioDiLog);
+    }
 }
+
+
 
 
 /*

@@ -58,7 +58,7 @@ public class DataModel {
             tableView.setItems(emailList.filtered(mail1 -> mail1.getId()==0));
         }
         else if(tipo == 2) {
-            tableView.setItems(emailList.filtered(mail1 -> mail1.getDestinatari().equals(this.email_utente)));
+            tableView.setItems(emailList.filtered(mail1 -> mail1.getDestinatari().equals(getEmail_utente())));
         }
         else if(tipo == 3) {
             tableView.setItems(emailList.filtered(mail1 -> mail1.getStato().equals("Inviata")));
@@ -104,13 +104,13 @@ public class DataModel {
         String destinatari = jsonObj.getString("destinatari");
         String oggetto = jsonObj.getString("oggetto");
         String testoMail = jsonObj.getString("testoMail");
-        LocalDateTime data = LocalDateTime.parse(jsonObj.getString("data"));
+        String data = jsonObj.getString("data");
         String uniqueCode = jsonObj.getString("uniqueCode");
         String stato = jsonObj.getString("stato");
 
         //String dataFormattata = formattaData(data);
 
-        Mail mail = new Mail(id, mittente, destinatari, oggetto, testoMail, data.toString(), uniqueCode, stato);
+        Mail mail = new Mail(id, mittente, destinatari, oggetto, testoMail, data, uniqueCode, stato);
 
         this.addEmail(mail);
     }

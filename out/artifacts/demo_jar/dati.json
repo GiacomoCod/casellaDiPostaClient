@@ -1,11 +1,11 @@
 [
   {
     "id": 0,
-    "mittente": "gennaro.codagnone@gmail.com",
+    "mittente": "giacomo.codagnone@gmail.com",
     "destinatari": "bob@example.com",
     "oggetto": "Come stai?",
     "testoMail": "Ciao Bob, come stai? Spero che questa email ti trovi bene.",
-    "data": "2024-04-29T15:30:45.123456789",
+    "data": "10/05/2024 17:30:51",
     "uniqueCode": "32c0c70f-a49a-43e2-b12f-550cfe4e5de6",
     "stato": "Da inviare"
 
@@ -16,7 +16,7 @@
     "destinatari": "giacomo.codagnone@gmail.com",
     "oggetto": "Riunione",
     "testoMail": "Ciao Dave, ti scrivo per informarti riguardo alla riunione di domani mattina alle 10:00.",
-    "data": "2024-04-29T15:30:45.123456789",
+    "data": "03/05/2024 10:39:51",
     "uniqueCode": "3d913810-2e45-49c2-b426-d4c4fa21be40",
     "stato": "ricevuta"
 
@@ -27,27 +27,27 @@
     "destinatari": "giacomo.codagnone@gmail.com",
     "oggetto": "Documenti",
     "testoMail": "Ciao Frank, ti invio il documento richiesto. Fammi sapere se hai bisogno di ulteriori informazioni.",
-    "data": "2024-04-29T15:30:45.123456789",
+    "data": "04/05/2024 18:40:00",
     "uniqueCode": "cfa5d5ff-beb4-4c28-adb4-cdbc038dfc01",
     "stato": "ricevuta"
   },
   {
     "id": 0,
-    "mittente": "gennaro.codagnone@gmail.com",
+    "mittente": "giacomo.codagnone@gmail.com",
     "destinatari": "gennaro.codagnone@gmail.com",
     "oggetto": "Richiesta aiuto",
     "testoMail": "Ciao Gennaro, ti invio questa mail per chiederti un aiuto riguardo il progetto. Fammi sapere quando sei disponibile.",
-    "data": "2024-04-29T15:30:45.123456789",
+    "data": "27/04/2024 16:39:55",
     "uniqueCode": "694ae2d0-4f62-4566-92bc-eb6580b27407",
     "stato": "Da inviare"
   },
   {
     "id": 3,
-    "mittente": "gennaro.codagnone@gmail.com",
+    "mittente": "giacomo.codagnone@gmail.com",
     "destinatari": "giacomo.codagnone@gmail.com",
     "oggetto": "Richiesta aiuto",
     "testoMail": "Ciao Gennaro, ti invio questa mail per chiederti un aiuto riguardo il progetto. Fammi sapere quando sei disponibile.",
-    "data": "2024-04-29T15:30:45.123456789",
+    "data": "09/05/2024 11:32:43",
     "uniqueCode": "47bc2a64-fe9e-4c05-91d0-7879ca060bc5",
     "stato": "ricevuta"
   }
