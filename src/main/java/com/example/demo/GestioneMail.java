@@ -19,14 +19,15 @@ import java.time.format.DateTimeFormatter;
 public class GestioneMail {
 
     private DataModel model;
+    private CasellaController controller;
 
     public void creaNuovaMail(DataModel model, TableView<Mail> mailTableView, int controllo) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("formInviaMail.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
         NuovaMailController nmc = loader.getController();
-        nmc.setStage(stage);
-        nmc.setMail(mailTableView);
+//        nmc.setStage(stage);
+//        nmc.setMail(mailTableView);
         nmc.initModel(model);
         if (controllo == 1) {
             nmc.setDestinatariReply(model.getCurrentMail().getMittente());
@@ -119,7 +120,7 @@ public class GestioneMail {
         return popUp.getResponse();
     }
 
-    public String richiestaOperazioneAlServer(DataModel modello, String comando) throws IOException {
+    public void richiestaOperazioneAlServer(DataModel modello, String comando) throws IOException {
 
         //compongo il io array json con tutte le mail da inviare (che hanno stato "Da inviare")
 
@@ -183,10 +184,13 @@ public class GestioneMail {
                             mail.setStato("Inviata");
                             //mail.setId(idDaIns);
                             //modello.getEmailList().remove(mail);
+                            controller.setBarraDiStato("INFO","Messaggi in posta in uscita inviati correttamente");
+                            controller.setNotificationButtonColor();
                         }
                     }
                     modello.aggiornaFile();
                 }
+
             } else {
                 //il server ha effettuato operazione di restituzione delle mail che il client ha ricevuto
                 for (Object obj : jsonResponse) {
@@ -199,9 +203,8 @@ public class GestioneMail {
                     LocalDateTime localDateTime = LocalDateTime.now();
                     String ldt = localDateTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
                     String numeroMessaggi = String.valueOf(jsonResponse.length());
-                    return ldt+" - INFO - Messaggi ricevuti: "+numeroMessaggi;
-                } else {
-                    return "";
+                    controller.setBarraDiStato("INFO", "Messaggi ricevuti: "+numeroMessaggi);
+                    controller.setNotificationButtonColor();
                 }
 
 
@@ -233,6 +236,9 @@ public class GestioneMail {
                 Platform.runLater(() -> {
                     try {
                         PopUp("Errore di connessione al server. " + e.getMessage(), 0);
+                        controller.setBarraDiStato("ERRORE","Errore di connessione al server. " + e.getMessage());
+                        controller.setNotificationButtonColor();
+
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -240,10 +246,9 @@ public class GestioneMail {
             }
         } catch (JSONException e) {
             System.out.println(e.getMessage());
+            controller.setBarraDiStato("ERRORE", "Errore nella lettura del JSON. " + e.getMessage());
+            controller.setNotificationButtonColor();
         }
-
-
-        return "";
     }
 
     private static JSONArray getJsonArray(Socket socket) throws IOException {
@@ -255,6 +260,10 @@ public class GestioneMail {
 
         //JSONObject jobjRecived = new JSONObject(responseBuilder.toString());
         return new JSONArray(responseBuilder.toString());
+    }
+
+    public void setCasellaController(CasellaController controller) {
+        this.controller = controller;
     }
 
 }

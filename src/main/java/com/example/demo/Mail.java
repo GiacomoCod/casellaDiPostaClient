@@ -12,9 +12,6 @@ public class Mail {
     private final StringProperty uniqueCode = new SimpleStringProperty();
     private final StringProperty stato = new SimpleStringProperty();
 
-    //private final JSONObject jobj = new JSONObject();
-
-
     public Mail(Integer id, String mittente, String destinatari, String oggetto, String testoMail, String data, String uniqueCode, String stato) {
         this.id.set(id);
         this.mittente.set(mittente);

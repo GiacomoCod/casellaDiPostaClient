@@ -6,7 +6,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.NuovaMailController">
    <children>
-      <Button fx:id="inviaMail" layoutX="426.0" layoutY="371.0" mnemonicParsing="false" onAction="#inviaMail" prefHeight="34.0" prefWidth="110.0" style="-fx-background-color: #ADD8E6; -fx-border-color: gray;" text="Invia">
+      <Button fx:id="inviaMail" layoutX="425.0" layoutY="370.0" mnemonicParsing="false" onAction="#inviaMail" prefHeight="34.0" prefWidth="110.0" stylesheets="@../../../css/bottoneInvia.css" text="Invia">
          <font>
             <Font name="Calibri Bold" size="13.0" />
          </font></Button>

@@ -9,11 +9,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="febfafe4-589a-47fd-84f7-d7b671732b0e" name="Changes" comment="Quarto commit">
+    <list default="true" id="febfafe4-589a-47fd-84f7-d7b671732b0e" name="Changes" comment="Quinto commit">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/bottoneInvia.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/bottoneNuovaMail.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/buttonStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/1505138-notifica-campana-icona-vettoriale-campanella.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/campanella.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/demo_jar/demo.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/demo_jar/demo.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DataModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DataModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Mail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/Mail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/casellaPostaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/casellaPostaView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/formInviaMail.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/formInviaMail.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +82,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/giaco/IdeaProjects/demo/src/main/resources/com/example/demo",
+    "last_opened_file_path": "C:/Users/giaco/IdeaProjects/JavaFXML8-MVCTutorial",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -86,10 +97,16 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\giaco\IdeaProjects\demo\src\main\resources\images" />
+      <recent name="C:\Users\giaco\IdeaProjects\demo\src\main\resources\com\example\demo\images" />
+      <recent name="C:\Users\giaco\IdeaProjects\demo\src\main\resources" />
       <recent name="C:\Users\giaco\IdeaProjects\demo\src\main\resources\com\example\demo" />
       <recent name="C:\Users\giaco\IdeaProjects\demo\Library" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\giaco\IdeaProjects\demo\src\main\resources" />
+      <recent name="C:\Users\giaco\IdeaProjects\demo\src\main\resources\com\example\demo\css" />
+      <recent name="C:\Users\giaco\IdeaProjects\demo\src\main\resources\images" />
       <recent name="C:\Users\giaco\IdeaProjects\demo\target" />
       <recent name="C:\Users\giaco\IdeaProjects\demo\src\main\resources\com\example\demo" />
     </key>
@@ -199,7 +216,14 @@
       <workItem from="1715190168147" duration="73000" />
       <workItem from="1715247609181" duration="7515000" />
       <workItem from="1715423298515" duration="3357000" />
-      <workItem from="1715522688554" duration="9417000" />
+      <workItem from="1715522688554" duration="10133000" />
+      <workItem from="1715590995553" duration="566000" />
+      <workItem from="1715673733090" duration="7718000" />
+      <workItem from="1715701874263" duration="755000" />
+      <workItem from="1715702657623" duration="2782000" />
+      <workItem from="1715705506825" duration="123000" />
+      <workItem from="1715705663357" duration="1879000" />
+      <workItem from="1715763349182" duration="9530000" />
     </task>
     <task id="LOCAL-00001" summary="Terzo commit">
       <option name="closed" value="true" />
@@ -217,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715534572774</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Quinto commit">
+      <option name="closed" value="true" />
+      <created>1715540498935</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715540498935</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +258,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Terzo commit" />
     <MESSAGE value="Quarto commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Quarto commit" />
+    <MESSAGE value="Quinto commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quinto commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -243,25 +276,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="4" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java</url>
-          <line>69</line>
-          <properties class="com.example.demo.NuovaMailController" method="inviaMail">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

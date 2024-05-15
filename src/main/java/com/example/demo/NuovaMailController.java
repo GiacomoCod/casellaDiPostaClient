@@ -32,15 +32,15 @@ public class NuovaMailController {
     public void setDestinatariReplyAll(String destinatari) {
         this.destinatari.setText(destinatari);
     }
-    // Metodo per iniettare l'oggetto Stage
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
+
+//    public void setStage(Stage stage) {
+//        this.stage = stage;
+//    }
+
     @FXML
     private void closeWindow() {
         stage.close(); // Chiudi la finestra corrente
     }
-
     @FXML
     private Button back;
     @FXML
@@ -105,8 +105,6 @@ public class NuovaMailController {
             gm.PopUp(messaggio, 0);
 
         }
-
-
     }
 
     private boolean controlloMessaggioDest(String messaggio) {
@@ -118,9 +116,9 @@ public class NuovaMailController {
         return !messaggio.equals("Inserire un oggetto");
     }
 
-    public void setMail(TableView<Mail> mailTableView) {
-        mailTableViewAgg = mailTableView;
-    }
+//    public void setMail(TableView<Mail> mailTableView) {
+//        mailTableViewAgg = mailTableView;
+//    }
 
     public void initModel(DataModel model) {
         if (this.model != null) {
@@ -130,8 +128,6 @@ public class NuovaMailController {
     }
 
     private String controllaDestinatario(String destDaControl) {
-        // espressione regolare per validare l'email
-        //String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
 
         if(destDaControl.isEmpty()) {
             return "Inserire un destinatario";

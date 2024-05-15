@@ -2,15 +2,14 @@ package com.example.demo;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-
 import java.io.*;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
@@ -40,6 +39,9 @@ public class DataModel {
     public ObservableList<Mail> getEmailList() {
         return emailList;
     }
+//    public ObservableValue<? extends ObservableList<Mail>> getEmailListProperty() {
+//        return (ObservableValue<TableView extends ObservableList<Mail>>) emailList;
+//    }
 
     public void setEmailList(ObservableList<Mail> email) {
         this.emailList = email;
@@ -53,6 +55,7 @@ public class DataModel {
     public void aggiornaTableVIew(TableView<Mail> tableView, int tipo) {
         if(tipo == 0) {
             tableView.setItems(emailList);
+
         }
         else if(tipo == 1) {
             tableView.setItems(emailList.filtered(mail1 -> mail1.getStato().equals("Da inviare")));
@@ -125,7 +128,6 @@ public class DataModel {
 */
 
     public void aggiornaFile() throws IOException {
-        // Scrivi la struttura dati Java aggiornata nel file JSON
         FileWriter writer = new FileWriter(fileDati);
         JSONArray jsonArrayAgg = new JSONArray(emailList);
         writer.write(jsonArrayAgg.toString());

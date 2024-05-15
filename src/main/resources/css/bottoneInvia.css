@@ -1,0 +1,11 @@
+#inviaMail {
+    -fx-background-color: #1a73e8; /* Colore di sfondo simile al blu di Gmail */
+    -fx-text-fill: white; /* Colore del testo bianco */
+    -fx-padding: 6px 30px; /* Aumenta il padding orizzontale per allungare il bottone */
+    -fx-background-radius: 20px; /* Arrotondamento degli angoli */
+    -fx-border-radius: 20px; /* Arrotondamento del bordo */
+    -fx-border-color: #1a73e8; /* Colore del bordo */
+    -fx-border-width: 2px; /* Spessore del bordo */
+    -fx-font-size: 14px; /* Dimensione del testo */
+    -fx-font-weight: bold; /* Testo in grassetto */
+}

@@ -1,0 +1,11 @@
+#notificationButton {
+    -fx-padding: 0; /* Rimuovi il padding */
+    -fx-background-radius: 50%; /* Arrotonda completamente gli angoli */
+    -fx-border-radius: 50%; /* Arrotonda completamente il bordo */
+    -fx-min-width: 30px; /* Imposta una larghezza minima */
+    -fx-min-height: 30px; /* Imposta un'altezza minima */
+    -fx-pref-width: 30px; /* Imposta una larghezza preferita */
+    -fx-pref-height: 30px; /* Imposta un'altezza preferita */
+    -fx-max-width: 30px; /* Imposta una larghezza massima */
+    -fx-max-height: 30px; /* Imposta un'altezza massima */
+}

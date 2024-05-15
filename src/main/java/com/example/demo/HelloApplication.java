@@ -11,8 +11,6 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
 
-    public DataModel model1;
-
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("casellaPostaView.fxml"));
