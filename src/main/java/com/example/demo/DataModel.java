@@ -111,8 +111,6 @@ public class DataModel {
         String uniqueCode = jsonObj.getString("uniqueCode");
         String stato = jsonObj.getString("stato");
 
-        //String dataFormattata = formattaData(data);
-
         Mail mail = new Mail(id, mittente, destinatari, oggetto, testoMail, data, uniqueCode, stato);
 
         this.addEmail(mail);

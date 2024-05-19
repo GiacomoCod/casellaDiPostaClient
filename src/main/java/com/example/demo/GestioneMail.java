@@ -26,7 +26,7 @@ public class GestioneMail {
         Parent root = loader.load();
         Stage stage = new Stage();
         NuovaMailController nmc = loader.getController();
-//        nmc.setStage(stage);
+        nmc.setStage(stage);
 //        nmc.setMail(mailTableView);
         nmc.initModel(model);
         if (controllo == 1) {
@@ -50,6 +50,7 @@ public class GestioneMail {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(new Scene(root));
         stage.showAndWait();
+
 
     }
 
@@ -129,6 +130,9 @@ public class GestioneMail {
         JSONArray jsonArray;
         if(comando.equals("invia")) {
             jsonArray = new JSONArray(modello.getEmailListUscita());
+            if(jsonArray.isEmpty()) {
+                return;
+            }
         } else {
             jsonArray = new JSONArray();
         }
@@ -173,13 +177,13 @@ public class GestioneMail {
             //effettuo controllo sui codici univoci ricevuti in risposta dal server, se corrispondono posso fleggare le mail come inviate
 
             if (comando.equals("invia")) {
+                controller.setBarraDiStato("DEBUG", "jsonresponse: "+jsonResponse);
                 for (Object obj : jsonResponse) {
                     JSONObject jsonObj = (JSONObject) obj;
                     String codiceDaContr = jsonObj.getString("uniqueCode");
-                    int idDaIns = jsonObj.getInt("id");
 
                     // da implementare tramite filter
-                    for (Mail mail : modello.getEmailList()) {
+                    for (Mail mail : modello.getEmailList().filtered(mail -> mail.getId()==0)) {
                         if (codiceDaContr.equals(mail.getUniqueCode())) {
                             mail.setStato("Inviata");
                             //mail.setId(idDaIns);
@@ -200,33 +204,13 @@ public class GestioneMail {
                 modello.aggiornaFile();
 
                 if(!jsonResponse.isEmpty()) {
-                    LocalDateTime localDateTime = LocalDateTime.now();
-                    String ldt = localDateTime.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
                     String numeroMessaggi = String.valueOf(jsonResponse.length());
                     controller.setBarraDiStato("INFO", "Messaggi ricevuti: "+numeroMessaggi);
                     controller.setNotificationButtonColor();
                 }
-
-
             }
 
-            //ciclo di controllo su tutta la lista controllando se il codice univoco corrispond ee segnare lo stato della mail come inviato
-/*
-            if ((mail.getId() == idDaContr) && (mail.getUniqueCode().equals(codiceDaContr))) {
-                mail.setStato("Inviata.");
-                mail.creaOggettoJson(mail.getId(), mail.getMittente(), mail.getDestinatario(), mail.getOggetto(), mail.getTestoMail(), mail.getUniqueCode(), mail.getStato());
-                modello.addEmail(mail);
-                //model.aggiornaTableVIew(mailTableViewAgg, 1);
-                modello.incrementUltimoId();
-                modello.aggiornaFile(jobj);
-                modello.removeFromeListaMailUscita(mail);
-
-
-                System.out.println(jsonResponse);
-            }
-
-
- */
+            socket.close();
 
         } catch (IOException e) {
             if (e.getMessage().equals("Connessione rifiutata")) {
@@ -235,20 +219,20 @@ public class GestioneMail {
                 System.out.println("Errore di connessione al server. " + e.getMessage());
                 Platform.runLater(() -> {
                     try {
-                        PopUp("Errore di connessione al server. " + e.getMessage(), 0);
                         controller.setBarraDiStato("ERRORE","Errore di connessione al server. " + e.getMessage());
                         controller.setNotificationButtonColor();
-
+                        PopUp("Errore di connessione al server. " + e.getMessage(), 0);
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
                 });
             }
         } catch (JSONException e) {
-            System.out.println(e.getMessage());
             controller.setBarraDiStato("ERRORE", "Errore nella lettura del JSON. " + e.getMessage());
             controller.setNotificationButtonColor();
+            System.out.println(e.getMessage());
         }
+
     }
 
     private static JSONArray getJsonArray(Socket socket) throws IOException {

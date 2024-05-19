@@ -1,5 +1,8 @@
 {
   "email_utente": "giacomo.codagnone@gmail.com",
   "server_ip": "localhost",
-  "server_port": 12345
+  "server_port": 12345,
+  "timer_invio": 20000,
+  "timer_ricezione": 20000
+
 }

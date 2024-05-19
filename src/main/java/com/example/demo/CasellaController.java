@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -75,7 +76,7 @@ public class CasellaController {
     @FXML
     public Label utente;
 
-    public void initModel(DataModel model) throws IOException {
+    public void initModel(DataModel model, Stage stage) throws IOException {
         if (this.model != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }
@@ -88,8 +89,20 @@ public class CasellaController {
         gm.setCasellaController(this);
         utente.setText("di " + model.getEmail_utente());
 
+        stage.setOnCloseRequest(event -> {
+            chiudiTimer();
+        });
+
     }
 
+    private void chiudiTimer() {
+        if(timerInvio != null) {
+            timerInvio.cancel();
+            taskInvio.cancel();
+            timerRichiesta.cancel();
+            taskRichiesta.cancel();
+        }
+    }
 
     @FXML
     public void handleMostraPostaInviata(ActionEvent actionEvent) {
@@ -108,12 +121,17 @@ public class CasellaController {
         gm.richiestaOperazioneAlServer(model, "richiedi");
     }
 
+    private Timer timerInvio;
+    private TimerTask taskInvio;
+    private Timer timerRichiesta;
+    private TimerTask taskRichiesta;
+
     @FXML
     public void handleAvviaSessioneAutomatica(ActionEvent actionEvent) {
 
-        Timer timerInvio = new Timer();
+        timerInvio = new Timer();
 
-        TimerTask taskInvio = new TimerTask() {
+        taskInvio = new TimerTask() {
             @Override
             public void run() {
                 try {
@@ -128,9 +146,9 @@ public class CasellaController {
         // Esecuzione una volta dopo 5 secondi e ogni 10 secondi
         timerInvio.schedule(taskInvio, 5000, model.getTimer_invio());
 
-        Timer timerRichiesta = new Timer();
+        timerRichiesta = new Timer();
 
-        TimerTask taskRichiesta = new TimerTask() {
+        taskRichiesta = new TimerTask() {
             @Override
             public void run() {
                 try {

@@ -18,7 +18,7 @@ public class HelloApplication extends Application {
         CasellaController casellaController = fxmlLoader.getController();
 
         DataModel model = new DataModel();
-        casellaController.initModel(model);
+        casellaController.initModel(model, stage);
         //casellaController.inviaComando();
 
 

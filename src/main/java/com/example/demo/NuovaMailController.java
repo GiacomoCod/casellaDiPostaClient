@@ -33,9 +33,9 @@ public class NuovaMailController {
         this.destinatari.setText(destinatari);
     }
 
-//    public void setStage(Stage stage) {
-//        this.stage = stage;
-//    }
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
 
     @FXML
     private void closeWindow() {
