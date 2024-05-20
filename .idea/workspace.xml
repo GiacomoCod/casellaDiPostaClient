@@ -9,12 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="febfafe4-589a-47fd-84f7-d7b671732b0e" name="Changes" comment="Settimo commit: correzione sui thread dei timer e task invio e visualizzazione errata di messaggi inviati correttare">
+    <list default="true" id="febfafe4-589a-47fd-84f7-d7b671732b0e" name="Changes" comment="Ottavo commit: correzione dettagli e snellimento codice">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/CasellaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/GestioneMail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/NuovaMailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/VisualizzaMailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/VisualizzaMailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/demo/casellaPostaView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/demo/casellaPostaView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +217,7 @@
       <workItem from="1715788460975" duration="1298000" />
       <workItem from="1715867318501" duration="1390000" />
       <workItem from="1716135284029" duration="6931000" />
-      <workItem from="1716214723175" duration="1820000" />
+      <workItem from="1716214723175" duration="5597000" />
     </task>
     <task id="LOCAL-00001" summary="Terzo commit">
       <option name="closed" value="true" />
@@ -261,7 +259,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716142085388</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Ottavo commit: correzione dettagli e snellimento codice">
+      <option name="closed" value="true" />
+      <created>1716216615516</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716216615516</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,7 +279,8 @@
     <MESSAGE value="Quinto commit" />
     <MESSAGE value="Sesto commit: modifiche grafiche e altre precisazioni" />
     <MESSAGE value="Settimo commit: correzione sui thread dei timer e task invio e visualizzazione errata di messaggi inviati corretta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Settimo commit: correzione sui thread dei timer e task invio e visualizzazione errata di messaggi inviati corretta" />
+    <MESSAGE value="Ottavo commit: correzione dettagli e snellimento codice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ottavo commit: correzione dettagli e snellimento codice" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
