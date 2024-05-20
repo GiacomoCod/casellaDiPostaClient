@@ -1,6 +1,4 @@
 package com.example.demo;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -16,9 +14,6 @@ import java.util.TimerTask;
 
 public class CasellaController {
 
-
-    @FXML
-    public Button cancella;
     private DataModel model;
 
     private final GestioneMail gm = new GestioneMail();
@@ -32,19 +27,19 @@ public class CasellaController {
 
     @FXML
     void handleCreaNuovaMail(MouseEvent event) throws IOException {
-        gm.creaNuovaMail(model, mailTableView, 0);
+        gm.creaNuovaMail(model, 0);
     }
 
     //controllo=1 serve per permettere di visualizzare il bottone "Rispondi" in visualizzazione
     @FXML
     public void handleApriMail(ActionEvent actionEvent) throws IOException {
-        gm.apriMailSelezionata(model, mailTableView, 1);
+        gm.apriMailSelezionata(model, mailTableView);
     }
 
     @FXML
     public void handleApriMailDoubleClick(MouseEvent mouseEventVis) throws IOException {
         if (mouseEventVis.getButton().equals(MouseButton.PRIMARY) && mouseEventVis.getClickCount() == 2) {
-            gm.apriMailSelezionata(model, mailTableView, 1);
+            gm.apriMailSelezionata(model, mailTableView);
         }
     }
 
@@ -109,8 +104,6 @@ public class CasellaController {
         model.aggiornaTableVIew(mailTableView, 3);
     }
 
-    String messaggio = "";
-
     @FXML
     public void handleInvio(ActionEvent actionEvent) throws IOException {
         gm.richiestaOperazioneAlServer(model, "invia");
@@ -119,6 +112,11 @@ public class CasellaController {
     @FXML
     public void handleRicevi(ActionEvent actionEvent) throws IOException {
         gm.richiestaOperazioneAlServer(model, "richiedi");
+    }
+
+    @FXML
+    public void handleDecoloraNotButton(MouseEvent mouseEvent) {
+        notificationButton.setStyle("");
     }
 
     private Timer timerInvio;
@@ -177,41 +175,10 @@ public class CasellaController {
         notificationButton.setStyle("-fx-background-color:  #FF6347");
     }
 
-    @FXML
-    public void handleDecoloraNotButton(MouseEvent mouseEvent) {
-        notificationButton.setStyle("");
-    }
-
-    @FXML
-    public void handleCancella(ActionEvent actionEvent) {
-        notificationButton.setStyle("");
-    }
 
 
 }
 
-
-
-
-/*
-    public void caricaMailDaStringa(String JsonString) {
-
-        JSONArray jsonArray = new JSONArray(JsonString);
-        // Itera su ciascun oggetto JSON nell'array
-        for (Object obj : jsonArray) {
-            JSONObject jsonObj = (JSONObject) obj;
-            // Leggi i singoli campi dall'oggetto JSON
-            Integer id = jsonObj.getInt("id");
-            String mittente = jsonObj.getString("mittente");
-            String destinatario = jsonObj.getString("destinatario");
-            String oggetto = jsonObj.getString("oggetto");
-            String testoMail = jsonObj.getString("testo_email");
-            LocalDateTime data = LocalDateTime.parse(jsonObj.getString("data"));
-
-            model.addEmail(new Mail(id, mittente, destinatario, oggetto, testoMail, data));
-        }
-    }
-*/
 
 
 

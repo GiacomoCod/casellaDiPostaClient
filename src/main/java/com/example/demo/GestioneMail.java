@@ -13,21 +13,17 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.net.Socket;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class GestioneMail {
 
-    private DataModel model;
     private CasellaController controller;
 
-    public void creaNuovaMail(DataModel model, TableView<Mail> mailTableView, int controllo) throws IOException {
+    public void creaNuovaMail(DataModel model, int controllo) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("formInviaMail.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
         NuovaMailController nmc = loader.getController();
         nmc.setStage(stage);
-//        nmc.setMail(mailTableView);
         nmc.initModel(model);
         if (controllo == 1) {
             nmc.setDestinatariReply(model.getCurrentMail().getMittente());
@@ -54,9 +50,7 @@ public class GestioneMail {
 
     }
 
-    public void apriMailSelezionata(DataModel model, TableView<Mail> tv, int controllo) throws IOException {
-        //Mail selectedItem = recordTableView.getSelectionModel().getSelectedItem();
-        //Mail selectedItem = mailTableView.getSelectionModel().getSelectedItem();
+    public void apriMailSelezionata(DataModel model, TableView<Mail> tv) throws IOException {
         model.setCurrentMail(tv.getSelectionModel().getSelectedItem());
         Mail selectedItem = model.getCurrentMail();
         if (selectedItem != null) {
@@ -68,10 +62,12 @@ public class GestioneMail {
 
             vmc.initModel(model);
             vmc.setStage(stage);
-            vmc.setMail(tv);
+
+            int controllo;
             if (selectedItem.getMittente().equals(model.getEmail_utente())) {
                 controllo = 0;
             }
+            else controllo = 1;
 
             vmc.setControllo(controllo);
             vmc.mostraOggetto();
@@ -124,9 +120,6 @@ public class GestioneMail {
     public void richiestaOperazioneAlServer(DataModel modello, String comando) throws IOException {
 
         //compongo il io array json con tutte le mail da inviare (che hanno stato "Da inviare")
-
-        System.out.println(comando);
-
         JSONArray jsonArray;
         if(comando.equals("invia")) {
             jsonArray = new JSONArray(modello.getEmailListUscita());
@@ -136,17 +129,6 @@ public class GestioneMail {
         } else {
             jsonArray = new JSONArray();
         }
-
-        //altrimenti il Jsonarray mi si riempi  a prescindere, se il comando è "richiedi" vorrei mandare un json vuoto
-        /*
-        if(comando.equals("Invia")) {
-            for (Mail mail : modello.getEmailListUscita()) {
-
-                JSONObject jobj = mail.getJobj();
-                jsonArray.put(jobj);
-            }
-        }
-       */
 
         System.out.println("lista mail da inviare:\n" + jsonArray);
 
@@ -166,10 +148,11 @@ public class GestioneMail {
 
             writer.println(toSend);
 
-            //socket.setSoTimeout(10000);
+            socket.setSoTimeout(60000);
 
 
-            // Risposta dal server
+            // Sezione che si occupa dell risposta dal server
+
             JSONArray jsonResponse = getJsonArray(socket);
 
             System.out.println("risposta dal server:\n" + jsonResponse);
@@ -177,7 +160,7 @@ public class GestioneMail {
             //effettuo controllo sui codici univoci ricevuti in risposta dal server, se corrispondono posso fleggare le mail come inviate
 
             if (comando.equals("invia")) {
-                controller.setBarraDiStato("DEBUG", "jsonresponse: "+jsonResponse);
+                //controller.setBarraDiStato("DEBUG", "jsonresponse: "+jsonResponse);
                 for (Object obj : jsonResponse) {
                     JSONObject jsonObj = (JSONObject) obj;
                     String codiceDaContr = jsonObj.getString("uniqueCode");
@@ -186,8 +169,6 @@ public class GestioneMail {
                     for (Mail mail : modello.getEmailList().filtered(mail -> mail.getId()==0)) {
                         if (codiceDaContr.equals(mail.getUniqueCode())) {
                             mail.setStato("Inviata");
-                            //mail.setId(idDaIns);
-                            //modello.getEmailList().remove(mail);
                             controller.setBarraDiStato("INFO","Messaggi in posta in uscita inviati correttamente");
                             controller.setNotificationButtonColor();
                         }
@@ -209,8 +190,6 @@ public class GestioneMail {
                     controller.setNotificationButtonColor();
                 }
             }
-
-            socket.close();
 
         } catch (IOException e) {
             if (e.getMessage().equals("Connessione rifiutata")) {
@@ -241,8 +220,6 @@ public class GestioneMail {
         String line;
         line = reader.readLine();
         responseBuilder.append(line);
-
-        //JSONObject jobjRecived = new JSONObject(responseBuilder.toString());
         return new JSONArray(responseBuilder.toString());
     }
 
