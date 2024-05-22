@@ -74,7 +74,6 @@ public class GestioneMail {
             vmc.mostraTesto();
             vmc.mostraMittente();
             vmc.mostraData();
-            vmc.mostraCodice();
             vmc.mostraStatoInvio(selectedItem.getStato());
             //stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
@@ -176,15 +175,16 @@ public class GestioneMail {
                     modello.aggiornaFile();
                 }
 
-            } else {
+            } else { //l'operazione sarà di "richiesta" al server
                 //il server ha effettuato operazione di restituzione delle mail che il client ha ricevuto
                 for (Object obj : jsonResponse) {
                     JSONObject jsonObj = (JSONObject) obj;
                     modello.aggiungiMailDaJson(jsonObj);
+
                 }
                 modello.aggiornaFile();
 
-                if(!jsonResponse.isEmpty()) {
+                if(!jsonResponse.isEmpty()) { 
                     String numeroMessaggi = String.valueOf(jsonResponse.length());
                     controller.setBarraDiStato("INFO", "Messaggi ricevuti: "+numeroMessaggi);
                     controller.setNotificationButtonColor();

@@ -11,21 +11,19 @@ import java.io.IOException;
 public class VisualizzaMailController {
 
     @FXML
-    public javafx.scene.control.TextArea TextArea;
+    private javafx.scene.control.TextArea TextArea;
     @FXML
-    public javafx.scene.control.TextField mittente;
+    private javafx.scene.control.TextField mittente;
     @FXML
-    public javafx.scene.control.TextField oggetto;
+    private javafx.scene.control.TextField oggetto;
     @FXML
-    public javafx.scene.control.Label data;
+    private javafx.scene.control.Label data;
     @FXML
-    public javafx.scene.control.MenuButton MenuButton;
+    private javafx.scene.control.MenuButton MenuButton;
     @FXML
-    public javafx.scene.control.Label codice;
+    private javafx.scene.control.Label stato;
     @FXML
-    public javafx.scene.control.Label stato;
-    @FXML
-    public javafx.scene.control.Button forwardButton;
+    private javafx.scene.control.Button forwardButton;
 
     private Stage stage;
 
@@ -63,9 +61,7 @@ public class VisualizzaMailController {
     public void mostraData() {
         data.setText(model.getCurrentMail().getData());
     }
-    public void mostraCodice() {
-        codice.setText(model.getCurrentMail().getUniqueCode());
-    }
+
     public void mostraStatoInvio(String st) {
         stato.setText(st);
     }

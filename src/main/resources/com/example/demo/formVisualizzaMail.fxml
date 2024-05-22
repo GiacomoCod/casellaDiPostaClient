@@ -41,8 +41,8 @@
                 <TextArea fx:id="TextArea" editable="false" layoutX="15.0" layoutY="15.0" prefHeight="292.0" prefWidth="391.0" scrollTop="1.0" wrapText="true" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="15.0" />
                 <MenuButton fx:id="MenuButton" layoutX="281.0" layoutY="325.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="94.0" text="Rispondi">
                     <items>
-                        <MenuItem fx:id="MiReply" mnemonicParsing="false" onAction="#handleReply" text="Reply" />
-                        <MenuItem fx:id="MiReplyAll" mnemonicParsing="false" onAction="#handleReplyAll" text="ReplyAll" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleReply" text="Reply" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleReplyAll" text="ReplyAll" />
                     </items>
                     <font>
                         <Font name="Calibri Bold" size="14.0" />

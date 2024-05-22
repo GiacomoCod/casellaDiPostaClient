@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.CasellaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.CasellaController">
     <children>
-        <TableView fx:id="mailTableView" editable="true" layoutX="26.0" layoutY="106.0" onMouseClicked="#handleApriMailDoubleClick" prefHeight="238.0" prefWidth="715.0" AnchorPane.bottomAnchor="240.0" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="106.0">
+        <TableView fx:id="mailTableView" editable="true" layoutX="26.0" layoutY="106.0" onMouseClicked="#handleApriMailDoubleClick" prefHeight="238.0" prefWidth="715.0" AnchorPane.bottomAnchor="240.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="106.0">
             <columns>
                 <TableColumn prefWidth="30" text="ID">
                     <cellValueFactory>
@@ -42,7 +42,7 @@
             </contextMenu>
         </TableView>
 
-        <Button fx:id="nuovaMail" layoutX="576.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#handleCreaNuovaMail" prefHeight="37.0" prefWidth="165.0" stylesheets="@../../../css/bottoneNuovaMail.css" text="Invia nuova mail" textAlignment="JUSTIFY" wrapText="true" AnchorPane.rightAnchor="31.0">
+        <Button fx:id="nuovaMail" layoutX="576.0" layoutY="60.0" mnemonicParsing="false" onMouseClicked="#handleCreaNuovaMail" prefHeight="37.0" prefWidth="165.0" stylesheets="@../../../css/bottoneNuovaMail.css" text="Invia nuova mail" textAlignment="JUSTIFY" wrapText="true" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="60.0">
              <font>
                 <Font name="Calibri Bold" size="8.0" />
              </font>
@@ -53,11 +53,11 @@
             <Font name="Calibri Bold Italic" size="16.0" />
          </font>
         </Label>
-      <Button layoutX="141.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleMostraMailUscita" prefHeight="25.0" prefWidth="108.0" text="Posta in uscita" textAlignment="CENTER">
+      <Button fx:id="buttonPostaInUscita" layoutX="141.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleMostraMailUscita" prefHeight="25.0" prefWidth="108.0" text="Posta in uscita" textAlignment="CENTER">
          <font>
             <Font name="Calibri" size="12.0" />
          </font></Button>
-      <Button layoutX="259.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleMostraMailInEntrata" prefHeight="25.0" prefWidth="108.0" text="Posta in ingresso" textAlignment="CENTER">
+      <Button fx:id="buttonPostaInEntrata" layoutX="259.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleMostraMailInEntrata" prefHeight="25.0" prefWidth="108.0" text="Posta in ingresso" textAlignment="CENTER">
          <font>
             <Font name="Calibri" size="12.0" />
          </font>
@@ -67,11 +67,11 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets></Button>
-      <Button layoutX="23.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleMostraTutto" prefHeight="25.0" prefWidth="108.0" text="Mostra tutto">
+      <Button fx:id="buttonMostraTutto" layoutX="23.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleMostraTutto" prefHeight="25.0" prefWidth="108.0" text="Mostra tutto">
          <font>
             <Font name="Calibri" size="12.0" />
          </font></Button>
-      <Button layoutX="378.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleMostraPostaInviata" prefHeight="25.0" prefWidth="108.0" text="Posta Inviata" textAlignment="CENTER">
+      <Button fx:id="buttonPostaInviata" layoutX="378.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleMostraPostaInviata" prefHeight="25.0" prefWidth="108.0" text="Posta Inviata" textAlignment="CENTER">
          <font>
             <Font name="Calibri" size="12.0" />
          </font></Button>
@@ -80,20 +80,20 @@
             <Font name="Arial Italic" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="notificationButton" layoutX="14.0" layoutY="598.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" stylesheets="@../../../css/buttonStyle.css" AnchorPane.bottomAnchor="26.0" />
-      <TextArea fx:id="barraDiStato" editable="false" layoutX="58.0" layoutY="590.0" onMouseClicked="#handleDecoloraNotButton" prefHeight="46.0" prefWidth="690.0" wrapText="true" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="58.0" />
+      <Button fx:id="notificationButton" layoutX="15.0" layoutY="551.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" stylesheets="@../../../css/buttonStyle.css" AnchorPane.bottomAnchor="20.0" />
+      <TextArea fx:id="barraDiStato" editable="false" layoutX="58.0" layoutY="590.0" onMouseClicked="#handleDecoloraNotButton" prefHeight="57.0" prefWidth="690.0" wrapText="true" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="28.0" />
       <TextArea fx:id="visualizzaTestoMail" editable="false" layoutX="29.0" layoutY="329.0" prefHeight="89.0" prefWidth="715.0" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="28.0" />
-      <Label fx:id="testoMailPerVisualizzazione" layoutX="30.0" layoutY="358.0" prefHeight="17.0" prefWidth="116.0" text="Testo mail" visible="false">
+      <Label fx:id="testoMailPerVisualizzazione" layoutX="30.0" layoutY="380.0" prefHeight="17.0" prefWidth="116.0" text="Testo mail" visible="false" AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="30.0">
          <font>
             <Font name="Calibri Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="58.0" layoutY="504.0" text="Barra delle notifiche">
+      <Label layoutX="58.0" layoutY="504.0" text="Barra delle notifiche" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="58.0">
          <font>
             <Font name="Calibri Bold Italic" size="13.0" />
          </font>
       </Label>
-      <MenuButton layoutX="707.0" layoutY="487.0" mnemonicParsing="false" text="+">
+      <MenuButton layoutX="712.0" layoutY="509.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="14.0" AnchorPane.bottomAnchor="67.0" AnchorPane.rightAnchor="28.0">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#handleInterrompiSessione" text="Interrompi sessione automatica" />
           <MenuItem mnemonicParsing="false" onAction="#handleAvviaSessione" text="Avvia sessione automatica" />

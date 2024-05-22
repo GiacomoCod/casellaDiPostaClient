@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.Comparator;
+import java.util.List;
 
 public class DataModel {
 
@@ -47,7 +48,7 @@ public class DataModel {
         this.emailList = email;
     }
 
-    public void addEmail(Mail mail) {
+    public void addEmail(Mail mail) throws IOException {
         this.emailList.add(mail);
         //mail.creaOggettoJson(mail.getId(), mail.getMittente(), mail.getDestinatario(), mail.getOggetto(), mail.getTestoMail(), mail.getUniqueCode(), mail.getStato());
     }
@@ -55,7 +56,6 @@ public class DataModel {
     public void aggiornaTableVIew(TableView<Mail> tableView, int tipo) {
         if(tipo == 0) {
             tableView.setItems(emailList);
-
         }
         else if(tipo == 1) {
             tableView.setItems(emailList.filtered(mail1 -> mail1.getStato().equals("Da inviare")));
@@ -69,14 +69,24 @@ public class DataModel {
 
     }
 
-    public int getUltimoId() {
-        if (emailList.isEmpty()) {
+    public int getUltimoId() throws FileNotFoundException {
+//        if (emailList.isEmpty()) {
+//            return 0;
+//        }
+//        else {
+//            emailList.sort(Comparator.comparing(Mail::getId));
+//            return emailList.getLast().getId();
+//        }
+        try {
+            FileReader reader = new FileReader(fileDatiUltimoId);
+            JSONTokener tokener = new JSONTokener(reader);
+            JSONObject jsonObject = new JSONObject(tokener);
+            return jsonObject.getInt("ultimoId");
+
+        } catch (FileNotFoundException e) {
             return 0;
         }
-        else {
-            emailList.sort(Comparator.comparing(Mail::getId));
-            return emailList.getLast().getId();
-        }
+
     }
 
     private final String jarPath = DataModel.class.getProtectionDomain().getCodeSource().getLocation().getPath();
@@ -89,18 +99,17 @@ public class DataModel {
     JSONArray jsonArray = new JSONArray(tokener);
 
     // Itera su ciascun oggetto JSON nell'array
-    public void loadData() {
+    public void loadData() throws IOException {
 
         for (Object obj : jsonArray) {
             JSONObject jsonObj = (JSONObject) obj;
-
             aggiungiMailDaJson(jsonObj);
 
         }
         emailList.sort(Comparator.comparing(Mail::getId));
     }
 
-    public void aggiungiMailDaJson(JSONObject jsonObj) {
+    public void aggiungiMailDaJson(JSONObject jsonObj) throws IOException {
         // Leggi i singoli campi dall'oggetto JSON
         Integer id = jsonObj.getInt("id");
         String mittente = jsonObj.getString("mittente");
@@ -111,19 +120,11 @@ public class DataModel {
         String uniqueCode = jsonObj.getString("uniqueCode");
         String stato = jsonObj.getString("stato");
 
-        Mail mail = new Mail(id, mittente, destinatari, oggetto, testoMail, data, uniqueCode, stato);
+        aggiornaFileUltimoId(id);
 
+        Mail mail = new Mail(id, mittente, destinatari, oggetto, testoMail, data, uniqueCode, stato);
         this.addEmail(mail);
     }
-
-/*
-    private String formattaData(LocalDateTime data) {
-        // Creazione di un oggetto LocalDateTime rappresentante la data e l'ora attuali
-        // Formattazione dell'oggetto LocalDateTime come stringa
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return data.format(formatter);
-    }
-*/
 
     public void aggiornaFile() throws IOException {
         FileWriter writer = new FileWriter(fileDati);
@@ -131,6 +132,19 @@ public class DataModel {
         writer.write(jsonArrayAgg.toString());
         writer.close();
     }
+
+    private final String jarPathId = DataModel.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+    private final File jarFileId = new File(jarPathId);
+    private final File fileDatiUltimoId = new File(jarFileId.getParent(), "ultimoId.json");
+
+    public void aggiornaFileUltimoId(int ultimoId) throws IOException {
+        FileWriter writer = new FileWriter(fileDatiUltimoId);
+        JSONObject jsonObjAgg = new JSONObject();
+        jsonObjAgg.put("ultimoId", ultimoId);
+        writer.write(jsonObjAgg.toString());
+        writer.close();
+    }
+
 
     public ObservableList<Mail> getEmailListUscita() {
         return emailList.filtered((mail1 -> mail1.getStato().equals("Da inviare")));

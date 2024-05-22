@@ -24,6 +24,14 @@ public class CasellaController {
     private TimerTask taskRichiesta;
 
     @FXML
+    public Button buttonPostaInUscita;
+    @FXML
+    public Button buttonPostaInEntrata;
+    @FXML
+    public Button buttonPostaInviata;
+    @FXML
+    public Button buttonMostraTutto;
+    @FXML
     public Label utente;
     @FXML
     public Label testoMailPerVisualizzazione;
@@ -67,26 +75,43 @@ public class CasellaController {
     @FXML
     public void handleMostraMailUscita(ActionEvent actionEvent) {
         model.aggiornaTableVIew(mailTableView, 1);
+        resettaColori();
+        buttonPostaInUscita.setDefaultButton(true);
     }
+
 
     @FXML
     public void handleMostraMailInEntrata(ActionEvent actionEvent) {
         model.aggiornaTableVIew(mailTableView, 2);
+        resettaColori();
+        buttonPostaInEntrata.setDefaultButton(true);
     }
 
     @FXML
     public void handleMostraTutto(ActionEvent actionEvent) {
         model.aggiornaTableVIew(mailTableView, 0);
+        resettaColori();
+        buttonMostraTutto.setDefaultButton(true);
     }
 
     @FXML
     public void handleMostraPostaInviata(ActionEvent actionEvent) {
         model.aggiornaTableVIew(mailTableView, 3);
+        resettaColori();
+        buttonPostaInviata.setDefaultButton(true);
+
     }
 
     @FXML
     public void handleDecoloraNotButton(MouseEvent mouseEvent) {
         notificationButton.setStyle("");
+    }
+
+    private void resettaColori() {
+        buttonPostaInUscita.setDefaultButton(false);
+        buttonPostaInEntrata.setDefaultButton(false);
+        buttonMostraTutto.setDefaultButton(false);
+        buttonPostaInviata.setDefaultButton(false);
     }
 
 
@@ -96,6 +121,7 @@ public class CasellaController {
         }
         this.model = model;
 
+        buttonMostraTutto.setDefaultButton(true);
         model.configurazioneIniziale();
         model.loadData();
         model.aggiornaTableVIew(mailTableView, 0);
@@ -144,7 +170,7 @@ public class CasellaController {
         };
 
         // Esecuzione una volta dopo 5 secondi e ogni 10 secondi
-        timerInvio.schedule(taskInvio, 10000, model.getTimer_invio());
+        timerInvio.schedule(taskInvio, 5000, model.getTimer_invio());
 
         timerRichiesta = new Timer();
         taskRichiesta = new TimerTask() {
@@ -158,7 +184,7 @@ public class CasellaController {
             }
         };
 
-        timerRichiesta.schedule(taskRichiesta, 20000, model.getTimer_ricezione());
+        timerRichiesta.schedule(taskRichiesta, 10000, model.getTimer_ricezione());
     }
 
     public void setBarraDiStato(String tipo, String messaggioDiLog) {
@@ -168,7 +194,7 @@ public class CasellaController {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
             String dataeora = localDateTime.format(formatter);
 
-            barraDiStato.appendText(dataeora+"- "+tipo+" - "+messaggioDiLog+"\n");
+            barraDiStato.appendText(dataeora + " - " + tipo + " - " + messaggioDiLog+"\n");
         }
     }
     public void setNotificationButtonColor() {
@@ -198,6 +224,8 @@ public class CasellaController {
 
     public void handleAvviaSessione(ActionEvent actionEvent) {
         avviaSessioneAutomatica();
+        setBarraDiStato("INFO","Sessione di collegamento al server riavviata: servizio di invio e ricezione mail attivo");
+        setNotificationButtonColor();
     }
 }
 
